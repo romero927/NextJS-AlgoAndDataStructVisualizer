@@ -1,6 +1,41 @@
 // app/algorithms/prim/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function prim(graph, startVertex):
+    mst = []
+    visited = set()
+    minHeap = MinHeap()
+
+    visited.add(startVertex)
+    addAdjacentEdgesToHeap(graph, startVertex, minHeap)
+
+    while not minHeap.isEmpty() and len(mst) < graph.vertices - 1:
+        edge = minHeap.extractMin()
+        
+        if edge.destination in visited:
+            continue
+        
+        mst.append(edge)
+        visited.add(edge.destination)
+        addAdjacentEdgesToHeap(graph, edge.destination, minHeap)
+        
+        visualize(mst, visited, edge)
+
+    return mst
+
+function addAdjacentEdgesToHeap(graph, vertex, minHeap):
+    for each neighbor in graph.getNeighbors(vertex):
+        if neighbor not in visited:
+            minHeap.add(Edge(vertex, neighbor, graph.getWeight(vertex, neighbor)))
+
+function visualize(mst, visited, currentEdge):
+    // Update UI to show:
+    // 1. Vertices included in the MST so far
+    // 2. Edges included in the MST
+    // 3. Highlight the current edge being added
+    // 4. Show the growing tree as new edges are added`;
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -187,6 +222,7 @@ const Prim: React.FC = () => {
             <li>Green edges are part of the MST</li>
           </ul>
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

@@ -1,6 +1,35 @@
 // app/algorithms/topological-sort/page.tsx
 "use client";
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function topologicalSort(graph):
+    visited = set()
+    stack = []
+
+    for each vertex in graph:
+        if vertex not in visited:
+            dfsTopologicalSort(graph, vertex, visited, stack)
+
+    return reversed(stack)
+
+function dfsTopologicalSort(graph, vertex, visited, stack):
+    visited.add(vertex)
+
+    for each neighbor in graph.getNeighbors(vertex):
+        if neighbor not in visited:
+            dfsTopologicalSort(graph, neighbor, visited, stack)
+
+    stack.append(vertex)
+    visualize(visited, stack)
+
+function visualize(visited, stack):
+    // Update UI to show:
+    // 1. Vertices that have been visited
+    // 2. Current state of the stack
+    // 3. Highlight the vertex currently being processed
+    // 4. Show the partial ordering of vertices discovered so far`;
+
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -205,6 +234,7 @@ const TopologicalSort: React.FC = () => {
             <li>Green nodes have been visited and are in the sorted order</li>
           </ul>
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

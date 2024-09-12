@@ -1,6 +1,30 @@
 // app/algorithms/kruskal/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function kruskal(graph):
+    edgeList = getAllEdgesSortedByWeight(graph)
+    disjointSet = DisjointSet(graph.vertices)
+    mst = []
+
+    for each edge in edgeList:
+        if disjointSet.find(edge.source) != disjointSet.find(edge.destination):
+            disjointSet.union(edge.source, edge.destination)
+            mst.append(edge)
+            visualize(mst, edge)
+        
+        if mst.length == graph.vertices - 1:
+            break
+
+    return mst
+
+function visualize(mst, currentEdge):
+    // Update UI to show:
+    // 1. All edges considered so far
+    // 2. Edges included in the MST
+    // 3. Highlight the current edge being considered
+    // 4. Show the forest of trees as they're being connected`;
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -190,6 +214,7 @@ const Kruskal: React.FC = () => {
             <li>Green edges are part of the MST</li>
           </ul>
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

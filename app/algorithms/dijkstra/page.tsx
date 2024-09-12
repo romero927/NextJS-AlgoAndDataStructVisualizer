@@ -1,6 +1,41 @@
 // app/algorithms/dijkstra/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function dijkstra(graph, startVertex):
+    distances = {}
+    previousVertices = {}
+    pq = PriorityQueue()
+
+    for each vertex in graph:
+        if vertex == startVertex:
+            distances[vertex] = 0
+            pq.add(vertex, 0)
+        else:
+            distances[vertex] = INFINITY
+            pq.add(vertex, INFINITY)
+        previousVertices[vertex] = null
+
+    while not pq.isEmpty():
+        currentVertex = pq.extractMin()
+        visualize(currentVertex, distances, previousVertices)
+
+        for each neighbor in graph.getNeighbors(currentVertex):
+            distance = distances[currentVertex] + graph.getWeight(currentVertex, neighbor)
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                previousVertices[neighbor] = currentVertex
+                pq.decreaseKey(neighbor, distance)
+
+    return distances, previousVertices
+
+function visualize(currentVertex, distances, previousVertices):
+    // Update UI to show:
+    // 1. Current vertex being processed
+    // 2. Known shortest distances to each vertex
+    // 3. The path to each vertex (using previousVertices)
+    // 4. Highlight the edges of the shortest paths found so far`;
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -211,6 +246,7 @@ const Dijkstra: React.FC = () => {
             <li>Green nodes have been visited</li>
           </ul>
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );
