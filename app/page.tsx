@@ -74,7 +74,7 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-indigo-700">Algorithm and Data Structure Visualizer</h1>
       
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-4 gap-8">
         <section className="card">
           <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Sorting Algorithms</h2>
           <ul className="space-y-2">
