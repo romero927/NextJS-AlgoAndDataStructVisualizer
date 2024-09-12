@@ -1,8 +1,8 @@
 // app/algorithms/topological-sort/page.tsx
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface Node {
   id: number;
@@ -29,7 +29,7 @@ const TopologicalSort: React.FC = () => {
   const generateGraph = () => {
     const newNodes: Node[] = [];
     const newEdges: Edge[] = [];
-    
+
     // Generate nodes
     for (let i = 0; i < 8; i++) {
       newNodes.push({
@@ -54,7 +54,8 @@ const TopologicalSort: React.FC = () => {
     setCurrentNode(null);
   };
 
-  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   const topologicalSort = async () => {
     setIsRunning(true);
@@ -67,7 +68,9 @@ const TopologicalSort: React.FC = () => {
       setCurrentNode(v);
       await sleep(1000);
 
-      const neighbors = edges.filter(edge => edge.source === v).map(edge => edge.target);
+      const neighbors = edges
+        .filter((edge) => edge.source === v)
+        .map((edge) => edge.target);
       for (const neighbor of neighbors) {
         if (!visited[neighbor]) {
           await dfs(neighbor);
@@ -91,17 +94,19 @@ const TopologicalSort: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Topological Sort Algorithm</h1>
-      
+      <h1 className="text-4xl font-bold mb-8 text-indigo-700">
+        Topological Sort Algorithm
+      </h1>
+
       <div className="mb-8">
-        <button 
+        <button
           onClick={generateGraph}
           disabled={isRunning}
           className="btn-primary mr-4"
         >
           Generate New Graph
         </button>
-        <button 
+        <button
           onClick={topologicalSort}
           disabled={isRunning}
           className="btn-secondary"
@@ -113,8 +118,11 @@ const TopologicalSort: React.FC = () => {
       <div className="border border-gray-300 h-96 relative">
         <svg width="100%" height="100%" viewBox="0 0 800 400">
           {edges.map((edge, index) => {
-            const source = nodes.find(node => node.id === edge.source)!;
-            const target = nodes.find(node => node.id === edge.target)!;
+            const source = nodes.find((node) => node.id === edge.source);
+            const target = nodes.find((node) => node.id === edge.target);
+
+            if (!source || !target) return null;
+
             return (
               <g key={index}>
                 <line
@@ -147,12 +155,24 @@ const TopologicalSort: React.FC = () => {
                 cx={node.x}
                 cy={node.y}
                 r="20"
-                fill={currentNode === node.id ? 'yellow' : sorted.includes(node.id) ? 'green' : 'blue'}
+                fill={
+                  currentNode === node.id
+                    ? "yellow"
+                    : sorted.includes(node.id)
+                    ? "green"
+                    : "blue"
+                }
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <text x={node.x} y={node.y} textAnchor="middle" dy=".3em" fill="white">
+              <text
+                x={node.x}
+                y={node.y}
+                textAnchor="middle"
+                dy=".3em"
+                fill="white"
+              >
                 {node.id}
               </text>
             </g>
@@ -161,17 +181,20 @@ const TopologicalSort: React.FC = () => {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Topological Sort Order:</h2>
-        <p className="text-gray-700">
-          {sorted.join(' → ')}
-        </p>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">
+          Topological Sort Order:
+        </h2>
+        <p className="text-gray-700">{sorted.join(" → ")}</p>
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Topological Sort Works</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">
+          How Topological Sort Works
+        </h2>
         <p className="text-gray-700">
-          Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for 
-          every directed edge uv, vertex u comes before v in the ordering. It's typically used for scheduling 
+          Topological sorting for Directed Acyclic Graph (DAG) is a linear
+          ordering of vertices such that for every directed edge uv, vertex u
+          comes before v in the ordering. It's typically used for scheduling
           jobs or tasks with dependencies.
         </p>
         <p className="text-gray-700 mt-2">
