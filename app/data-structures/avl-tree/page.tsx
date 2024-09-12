@@ -259,7 +259,7 @@ const AVLTreeVisualization: React.FC = () => {
           Key features:
           <ul className="list-disc list-inside mt-2">
             <li>Maintains balance factor (BF) for each node: BF = height(left subtree) - height(right subtree)</li>
-            <li>If |BF| > 1 after an insertion or deletion, the tree is rebalanced using rotations</li>
+            <li>If |BF| {'>'} 1 after an insertion or deletion, the tree is rebalanced using rotations</li>
             <li>Ensures O(log n) time complexity for insertion, deletion, and search operations</li>
           </ul>
         </p>

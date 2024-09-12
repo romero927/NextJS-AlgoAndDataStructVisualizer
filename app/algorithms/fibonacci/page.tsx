@@ -80,7 +80,7 @@ const Fibonacci: React.FC = () => {
           <ol className="list-decimal list-inside mt-2">
             <li>Initialize an array with the first two Fibonacci numbers: [0, 1]</li>
             <li>For each subsequent position i, calculate F[i] = F[i-1] + F[i-2]</li>
-            <li>Continue until we've calculated the nth number</li>
+            <li>Continue until we`&apos;`ve calculated the nth number</li>
           </ol>
         </p>
         <p className="text-gray-700 mt-2">

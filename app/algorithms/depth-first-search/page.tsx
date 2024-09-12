@@ -166,7 +166,7 @@ const DFSTree: React.FC = () => {
         <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Depth-First Search Works on Trees</h2>
         <p className="text-gray-700">
           Depth-First Search (DFS) on a tree starts at the root and explores as far as possible along each branch before backtracking. 
-          In this visualization, we're using an in-order traversal: left subtree, root, right subtree. The algorithm visits the left 
+          In this visualization, we`&lsquo;`re using an in-order traversal: left subtree, root, right subtree. The algorithm visits the left 
           child, then the node itself, and finally the right child before backtracking.
         </p>
         <p className="text-gray-700 mt-2">

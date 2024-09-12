@@ -44,10 +44,10 @@ const BinarySearch: React.FC = () => {
   const [target, setTarget] = useState<number | null>(null);
   const [left, setLeft] = useState<number>(0);
   const [right, setRight] = useState<number>(0);
-  const [mid, setMid] = useState<number>(0);
   const [found, setFound] = useState<boolean>(false);
   const [searching, setSearching] = useState<boolean>(false);
-
+  const [mid, setMid] = useState<number>(0);
+  
   useEffect(() => {
     resetArray();
   }, []);

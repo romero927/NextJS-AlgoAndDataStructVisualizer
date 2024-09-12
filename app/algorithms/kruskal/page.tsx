@@ -111,7 +111,7 @@ const Kruskal: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Kruskal's Minimum Spanning Tree Algorithm</h1>
+      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Kruskal`&apos;`s Minimum Spanning Tree Algorithm</h1>
       
       <div className="mb-8">
         <button 
@@ -126,7 +126,7 @@ const Kruskal: React.FC = () => {
           disabled={isRunning}
           className="btn-secondary"
         >
-          Run Kruskal's Algorithm
+          Run Kruskal`&apos;`s Algorithm
         </button>
       </div>
 
@@ -176,10 +176,10 @@ const Kruskal: React.FC = () => {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Kruskal's Algorithm Works</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Kruskal`&apos;`s Algorithm Works</h2>
         <p className="text-gray-700">
-          Kruskal's algorithm finds a minimum spanning tree for a connected weighted graph. It adds the 
-          smallest edge that doesn't create a cycle, continuing until all nodes are connected. The algorithm 
+          Kruskal`&apos;`s algorithm finds a minimum spanning tree for a connected weighted graph. It adds the 
+          smallest edge that doesn`&apos;`t create a cycle, continuing until all nodes are connected. The algorithm 
           uses a disjoint-set data structure to efficiently check for cycles.
         </p>
         <p className="text-gray-700 mt-2">

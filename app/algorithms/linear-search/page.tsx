@@ -114,8 +114,8 @@ const LinearSearch: React.FC = () => {
         <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Linear Search Works</h2>
         <p className="text-gray-700">
           Linear Search is the simplest search algorithm. It sequentially checks each element 
-          of the list until a match is found or the whole list has been searched. While it's 
-          not the most efficient for large datasets, it's easy to implement and works on unsorted lists.
+          of the list until a match is found or the whole list has been searched. While it`&apos;`s 
+          not the most efficient for large datasets, it`&apos;`s easy to implement and works on unsorted lists.
 
           <Pseudocode code={pseudocodeExample} />
         </p>

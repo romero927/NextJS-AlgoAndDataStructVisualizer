@@ -21,7 +21,7 @@ interface BarProps {
   isSorted: boolean;
 }
 
-const Bar: React.FC<BarProps> = ({ value, index, isSwapping, isSorted }) => (
+const Bar: React.FC<BarProps> = ({ value, isSwapping, isSorted }) => (
   <motion.div
     className={`w-8 mx-1 rounded-t-lg ${
       isSwapping ? 'bg-yellow-500' : isSorted ? 'bg-green-500' : 'bg-blue-500'
@@ -58,7 +58,7 @@ const BubbleSort: React.FC = () => {
 
   const bubbleSort = async () => {
     setSorting(true);
-    let arr = [...array];
+    const arr = [...array];
     const n = arr.length;
 
     for (let i = 0; i < n - 1; i++) {
@@ -121,7 +121,7 @@ const BubbleSort: React.FC = () => {
           Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, 
           compares adjacent elements and swaps them if they are in the wrong order. The pass through 
           the list is repeated until the list is sorted. The algorithm gets its name from the way 
-          smaller elements "bubble" to the top of the list with each iteration.
+          smaller elements `&ldquo;`bubble`&ldquo;` to the top of the list with each iteration.
 
           <Pseudocode code={pseudocodeExample} />
         </p>

@@ -62,7 +62,7 @@ const InsertionSort: React.FC = () => {
     for (let i = 1; i < n; i++) {
       setActiveIndex(i);
       await sleep(500);
-      let key = arr[i];
+      const key = arr[i];
       let j = i - 1;
 
       while (j >= 0 && arr[j] > key) {

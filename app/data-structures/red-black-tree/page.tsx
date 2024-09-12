@@ -181,7 +181,7 @@ const RedBlackTreeVisualization: React.FC = () => {
   };
 
   const insertNode = (value: number): void => {
-    let newNode = createNode(value);
+    const newNode = createNode(value);
 
     if (root === null) {
       newNode.color = 'black';
@@ -195,9 +195,9 @@ const RedBlackTreeVisualization: React.FC = () => {
     while (current !== null) {
       parent = current;
       if (value < current.value) {
-        current = current.left;
+        current = current.left!;
       } else if (value > current.value) {
-        current = current.right;
+        current = current.right!;
       } else {
         return; // Duplicate values are not allowed
       }

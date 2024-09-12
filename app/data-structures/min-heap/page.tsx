@@ -240,8 +240,8 @@ const MinHeapVisualization: React.FC = () => {
           </ul>
         </p>
         <p className="text-gray-700 mt-2">
-          Min Heaps are commonly used in priority queues, scheduling algorithms, and in algorithms like Dijkstra's 
-          shortest path and Prim's minimum spanning tree.
+          Min Heaps are commonly used in priority queues, scheduling algorithms, and in algorithms like Dijkstra`&apos;`s 
+          shortest path and Prim`&apos;`s minimum spanning tree.
         </p>
         <Pseudocode code={pseudocodeExample} />
       </div>

@@ -20,12 +20,13 @@ const Dijkstra: React.FC = () => {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [distances, setDistances] = useState<number[]>([]);
-  const [previous, setPrevious] = useState<(number | null)[]>([]);
   const [visited, setVisited] = useState<number[]>([]);
   const [current, setCurrent] = useState<number | null>(null);
-  const [startNode, setStartNode] = useState<number>(0);
+  const [startNode] = useState<number>(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [previous, setPrevious] = useState<(number | null)[]>([]);
 
+  
   useEffect(() => {
     generateGraph();
   }, []);
@@ -119,7 +120,7 @@ const Dijkstra: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Dijkstra's Shortest Path Algorithm</h1>
+      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Dijkstra`&apos;`s Shortest Path Algorithm</h1>
       
       <div className="mb-8">
         <button 
@@ -134,7 +135,7 @@ const Dijkstra: React.FC = () => {
           disabled={isRunning}
           className="btn-secondary"
         >
-          Run Dijkstra's Algorithm
+          Run Dijkstra`&apos;`s Algorithm
         </button>
       </div>
 
@@ -195,11 +196,11 @@ const Dijkstra: React.FC = () => {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Dijkstra's Algorithm Works</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Dijkstra`&apos;`s Algorithm Works</h2>
         <p className="text-gray-700">
-          Dijkstra's algorithm finds the shortest path between nodes in a graph. It picks the unvisited node with 
+          Dijkstra`&apos;`s algorithm finds the shortest path between nodes in a graph. It picks the unvisited node with 
           the lowest distance, calculates the distance through it to each unvisited neighbor, and updates the 
-          neighbor's distance if smaller. This process repeats until all nodes have been visited.
+          neighbor`&apos;`s distance if smaller. This process repeats until all nodes have been visited.
         </p>
         <p className="text-gray-700 mt-2">
           Color representation:

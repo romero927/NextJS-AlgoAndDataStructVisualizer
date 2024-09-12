@@ -1,5 +1,4 @@
 // app/page.tsx
-import { tree } from 'next/dist/build/templates/app-page';
 import Link from 'next/link';
 
 interface Item {

@@ -172,4 +172,8 @@ const HeapSort: React.FC = () => {
           <Pseudocode code={pseudocodeExample} />
         </p>
       </div>
-    </div
+    </div>
+      );
+    };
+    
+    export default HeapSort;

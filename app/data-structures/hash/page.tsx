@@ -179,7 +179,7 @@ const HashTableVisualization: React.FC = () => {
   const [key, setKey] = useState<string>('');
   const [value, setValue] = useState<string>('');
   const [message, setMessage] = useState<string>('');
-  const [, forceUpdate] = useState<{}>();
+  const [, forceUpdate] = useState<object>();
 
   const handleSet = () => {
     if (key && value) {

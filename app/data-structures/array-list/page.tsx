@@ -103,7 +103,7 @@ const ArrayListVisualization: React.FC = () => {
   const [arrayList] = useState<ArrayList<number>>(new ArrayList<number>());
   const [inputValue, setInputValue] = useState<string>('');
   const [message, setMessage] = useState<string>('');
-  const [, forceUpdate] = useState<{}>();
+  const [, forceUpdate] = useState<object>();
 
   const handleAdd = () => {
     const value = parseInt(inputValue);
@@ -209,7 +209,7 @@ const ArrayListVisualization: React.FC = () => {
         </p>
         <p className="text-gray-700 mt-2">
           ArrayLists are used when you need a dynamic size array with fast access and efficient 
-          appending. They're commonly used in situations where the number of elements is unknown 
+          appending. They`&apos;`re commonly used in situations where the number of elements is unknown 
           or can change over time.
         </p>
         <Pseudocode code={pseudocodeExample} />

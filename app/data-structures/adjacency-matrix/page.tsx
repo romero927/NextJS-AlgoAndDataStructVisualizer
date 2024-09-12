@@ -170,7 +170,7 @@ const AdjacencyMatrixVisualization: React.FC = () => {
           <ul className="list-disc list-inside mt-2">
             <li>Representation is easier to implement and follow</li>
             <li>Removing an edge takes O(1) time</li>
-            <li>Queries like whether there is an edge from vertex 'u' to vertex 'v' are efficient and can be done O(1)</li>
+            <li>Queries like whether there is an edge from vertex `&lsquo;`u`&lsquo;` to vertex `&lsquo;`v`&lsquo;` are efficient and can be done O(1)</li>
           </ul>
         </p>
         <p className="text-gray-700 mt-2">
