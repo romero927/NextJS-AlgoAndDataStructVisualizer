@@ -120,7 +120,7 @@ const Dijkstra: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Dijkstra`&apos;`s Shortest Path Algorithm</h1>
+      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Dijkstra's Shortest Path Algorithm</h1>
       
       <div className="mb-8">
         <button 
@@ -135,7 +135,7 @@ const Dijkstra: React.FC = () => {
           disabled={isRunning}
           className="btn-secondary"
         >
-          Run Dijkstra`&apos;`s Algorithm
+          Run Dijkstra's Algorithm
         </button>
       </div>
 
@@ -196,11 +196,11 @@ const Dijkstra: React.FC = () => {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Dijkstra`&apos;`s Algorithm Works</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Dijkstra's Algorithm Works</h2>
         <p className="text-gray-700">
-          Dijkstra`&apos;`s algorithm finds the shortest path between nodes in a graph. It picks the unvisited node with 
+          Dijkstra's algorithm finds the shortest path between nodes in a graph. It picks the unvisited node with 
           the lowest distance, calculates the distance through it to each unvisited neighbor, and updates the 
-          neighbor`&apos;`s distance if smaller. This process repeats until all nodes have been visited.
+          neighbor's distance if smaller. This process repeats until all nodes have been visited.
         </p>
         <p className="text-gray-700 mt-2">
           Color representation:

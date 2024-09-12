@@ -183,8 +183,8 @@ const BSTVisualization: React.FC = () => {
           A Binary Search Tree (BST) is a binary tree with the following properties:
         </p>
         <ul className="list-disc list-inside mt-2 text-gray-700">
-          <li>The left subtree of a node contains only nodes with keys less than the node`&apos;`s key</li>
-          <li>The right subtree of a node contains only nodes with keys greater than the node`&apos;`s key</li>
+          <li>The left subtree of a node contains only nodes with keys less than the node's key</li>
+          <li>The right subtree of a node contains only nodes with keys greater than the node's key</li>
           <li>Both the left and right subtrees must also be binary search trees</li>
         </ul>
         <p className="text-gray-700 mt-2">

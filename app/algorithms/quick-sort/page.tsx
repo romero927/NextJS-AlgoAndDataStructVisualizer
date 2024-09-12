@@ -143,7 +143,7 @@ const QuickSort: React.FC = () => {
       <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Quick Sort Works</h2>
         <p className="text-gray-700">
-          Quick Sort is a divide-and-conquer algorithm. It works by selecting a `&lsquo;`pivot`&lsquo;` element from the array 
+          Quick Sort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array 
           and partitioning the other elements into two sub-arrays, according to whether they are less than or 
           greater than the pivot. The sub-arrays are then sorted recursively. This process continues until the 
           entire array is sorted.

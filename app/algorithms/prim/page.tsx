@@ -106,7 +106,7 @@ const Prim: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Prim`&apos;`s Minimum Spanning Tree Algorithm</h1>
+      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Prim's Minimum Spanning Tree Algorithm</h1>
       
       <div className="mb-8">
         <button 
@@ -121,7 +121,7 @@ const Prim: React.FC = () => {
           disabled={isRunning}
           className="btn-secondary"
         >
-          Run Prim`&apos;`s Algorithm
+          Run Prim's Algorithm
         </button>
       </div>
 
@@ -171,9 +171,9 @@ const Prim: React.FC = () => {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Prim`&apos;`s Algorithm Works</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Prim's Algorithm Works</h2>
         <p className="text-gray-700">
-          Prim`&apos;`s algorithm finds a minimum spanning tree for a weighted undirected graph. It starts with 
+          Prim's algorithm finds a minimum spanning tree for a weighted undirected graph. It starts with 
           an arbitrary node and grows the tree one edge at a time, always adding the lowest-weight edge 
           that connects a tree vertex to a non-tree vertex.
         </p>

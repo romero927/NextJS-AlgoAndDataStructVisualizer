@@ -85,17 +85,17 @@ const Navbar: React.FC = () => {
             <ul className="absolute left-0 hidden pt-2 group-hover:block bg-white shadow-lg rounded-md overflow-hidden">
               <li>
                 <Link href="/algorithms/dijkstra" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition duration-300">
-                  Dijkstra`&apos;`s Shortest Path
+                  Dijkstra's Shortest Path
                 </Link>
               </li>
               <li>
                 <Link href="/algorithms/kruskal" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition duration-300">
-                  Kruskal`&apos;`s Minimum Spanning Tree
+                  Kruskal's Minimum Spanning Tree
                 </Link>
               </li>
               <li>
                 <Link href="/algorithms/prim" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition duration-300">
-                  Prim`&apos;`s Minimum Spanning Tree
+                  Prim's Minimum Spanning Tree
                 </Link>
               </li>
               <li>

@@ -107,7 +107,7 @@ const NaiveStringMatching: React.FC = () => {
           <ol className="list-decimal list-inside mt-2">
             <li>Slide the pattern over the text one by one</li>
             <li>For each position, compare the characters of the pattern with the text</li>
-            <li>If all characters match, we`&apos;`ve found an occurrence of the pattern</li>
+            <li>If all characters match, we've found an occurrence of the pattern</li>
             <li>Move to the next position and repeat</li>
           </ol>
         </p>

@@ -171,7 +171,7 @@ const TopologicalSort: React.FC = () => {
         <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Topological Sort Works</h2>
         <p className="text-gray-700">
           Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for 
-          every directed edge uv, vertex u comes before v in the ordering. It`&apos;`s typically used for scheduling 
+          every directed edge uv, vertex u comes before v in the ordering. It's typically used for scheduling 
           jobs or tasks with dependencies.
         </p>
         <p className="text-gray-700 mt-2">
