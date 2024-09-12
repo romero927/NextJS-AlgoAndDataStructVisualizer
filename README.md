@@ -2,7 +2,7 @@
 
 This project is a comprehensive visualization tool for various algorithms and data structures. It's built using Next.js and TypeScript, providing interactive and animated visualizations to help users understand complex computer science concepts.
 
-Available to test on Fly.io at: (https://kgromero-nextjs-visualizer.fly.dev/)[https://kgromero-nextjs-visualizer.fly.dev/]
+Available to test on Fly.io at: [https://kgromero-nextjs-visualizer.fly.dev/](https://kgromero-nextjs-visualizer.fly.dev/)
 
 ## Features
 
