@@ -25,13 +25,13 @@ const searchingAlgorithms: Item[] = [
 
 const dynamicProgramming: Item[] = [
   { name: "Fibonacci Sequence", path: "/algorithms/fibonacci" },
-  { name: "Longest Common Subsequence", path: "/algorithms/lcs" },
+  { name: "Longest Common Subsequence", path: "/algorithms/longest-common-subsequence" },
   { name: "Knapsack Problem", path: "/algorithms/knapsack" },
 ];
 
 const stringMatching: Item[] = [
   { name: "Naive String Matching", path: "/algorithms/naive-string-matching" },
-  { name: "Knuth-Morris-Pratt", path: "/algorithms/kmp" },
+  { name: "Knuth-Morris-Pratt", path: "/algorithms/knuth-morris-pratt" },
 ];
 
 const graphAlgorithms: Item[] = [
@@ -52,7 +52,7 @@ const linearDataStructures: Item[] = [
 
 const treeDataStructures: Item[] = [
   { name: "Binary Tree", path: "/data-structures/binary-tree" },
-  { name: "Binary Search Tree", path: "/data-structures/bst" },
+  { name: "Binary Search Tree", path: "/data-structures/binary-search-tree" },
   { name: "AVL Tree", path: "/data-structures/avl-tree" },
   { name: "Red-Black Tree", path: "/data-structures/red-black-tree" },
 ];
