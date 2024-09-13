@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
               
               <li className="px-4 py-2 text-sm font-bold text-gray-700 bg-gray-100">String Matching</li>
               <li><Link href="/algorithms/naive-string-matching" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Naive String Matching</Link></li>
-              <li><Link href="/algorithms/kmp" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Knuth-Morris-Pratt</Link></li>
+              <li><Link href="/algorithms/knuth-morris-pratt" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Knuth-Morris-Pratt</Link></li>
               
               <li className="px-4 py-2 text-sm font-bold text-gray-700 bg-gray-100">Graph Algorithms</li>
               <li><Link href="/algorithms/dijkstra" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Dijkstra's Shortest Path</Link></li>
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
               
               <li className="px-4 py-2 text-sm font-bold text-gray-700 bg-gray-100">Tree Data Structures</li>
               <li><Link href="/data-structures/binary-tree" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Binary Tree</Link></li>
-              <li><Link href="/data-structures/bst" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Binary Search Tree</Link></li>
+              <li><Link href="/data-structures/binary-search-tree" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Binary Search Tree</Link></li>
               <li><Link href="/data-structures/avl-tree" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">AVL Tree</Link></li>
               <li><Link href="/data-structures/red-black-tree" className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700">Red-Black Tree</Link></li>
               
