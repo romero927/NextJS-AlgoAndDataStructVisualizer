@@ -1,4 +1,5 @@
 // app/page.tsx
+import React from 'react';
 import Link from 'next/link';
 
 interface Item {
@@ -22,6 +23,17 @@ const searchingAlgorithms: Item[] = [
   { name: 'Breadth-First Search', path: '/algorithms/breadth-first-search' },
 ];
 
+const dynamicProgramming: Item[] = [
+  { name: 'Fibonacci Sequence', path: '/algorithms/fibonacci' },
+  { name: 'Longest Common Subsequence', path: '/algorithms/lcs' },
+  { name: 'Knapsack Problem', path: '/algorithms/knapsack' },
+];
+
+const stringMatching: Item[] = [
+  { name: 'Naive String Matching', path: '/algorithms/naive-string-matching' },
+  { name: 'Knuth-Morris-Pratt', path: '/algorithms/kmp' },
+];
+
 const graphAlgorithms: Item[] = [
   { name: "Dijkstra's Shortest Path", path: '/algorithms/dijkstra' },
   { name: "Kruskal's Minimum Spanning Tree", path: '/algorithms/kruskal' },
@@ -29,31 +41,18 @@ const graphAlgorithms: Item[] = [
   { name: 'Topological Sort', path: '/algorithms/topological-sort' },
 ];
 
-const dynamicProgrammingAlgorithms: Item[] = [
-  { name: 'Fibonacci Sequence', path: '/algorithms/fibonacci' },
-  { name: 'Longest Common Subsequence', path: '/algorithms/longest-common-subsequence' },
-  { name: 'Knapsack Problem', path: '/algorithms/knapsack' },
-];
-
-const stringMatchingAlgorithms: Item[] = [
-  { name: 'Naive String Matching', path: '/algorithms/naive-string-matching' },
-  { name: 'Knuth-Morris-Pratt (KMP)', path: '/algorithms/knuth-morris-pratt' },
-];
-
 const linearDataStructures: Item[] = [
   { name: 'Array', path: '/data-structures/array' },
+  { name: 'ArrayList', path: '/data-structures/arraylist' },
   { name: 'Linked List', path: '/data-structures/linked-list' },
   { name: 'Stack', path: '/data-structures/stack' },
   { name: 'Queue', path: '/data-structures/queue' },
   { name: 'Deque', path: '/data-structures/deque' },
-  { name: 'Map', path: '/data-structures/map' },
-  { name: 'Hash', path: '/data-structures/hash' },
-  { name: 'Array List', path: '/data-structures/array-list' },
 ];
 
 const treeDataStructures: Item[] = [
   { name: 'Binary Tree', path: '/data-structures/binary-tree' },
-  { name: 'Binary Search Tree', path: '/data-structures/binary-search-tree' },
+  { name: 'Binary Search Tree', path: '/data-structures/bst' },
   { name: 'AVL Tree', path: '/data-structures/avl-tree' },
   { name: 'Red-Black Tree', path: '/data-structures/red-black-tree' },
 ];
@@ -63,135 +62,56 @@ const heapDataStructures: Item[] = [
   { name: 'Max Heap', path: '/data-structures/max-heap' },
 ];
 
-const graphDataStructures: Item[] = [
+const hashDataStructures: Item[] = [
+  { name: 'Hash Table', path: '/data-structures/hash-table' },
+  { name: 'Map', path: '/data-structures/map' },
+];
+
+const graphRepresentations: Item[] = [
   { name: 'Adjacency Matrix', path: '/data-structures/adjacency-matrix' },
   { name: 'Adjacency List', path: '/data-structures/adjacency-list' },
 ];
 
+const Card: React.FC<{ title: string; items: Item[] }> = ({ title, items }) => (
+  <div className="bg-white shadow rounded-lg overflow-hidden">
+    <div className="bg-indigo-600 text-white text-sm font-semibold py-1 px-2">
+      {title}
+    </div>
+    <div className="p-2">
+      <div className="grid grid-cols-2 gap-1 text-sm">
+        {items.map((item) => (
+          <Link key={item.name} href={item.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
+            {item.name}
+          </Link>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Algorithm and Data Structure Visualizer</h1>
+    <div className="container mx-auto px-4 h-screen flex flex-col">
+      <h1 className="text-2xl font-bold my-4 text-indigo-700">Algorithm and Data Structure Visualizer</h1>
       
-      <div className="grid md:grid-cols-4 gap-8">
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Sorting Algorithms</h2>
-          <ul className="space-y-2">
-            {sortingAlgorithms.map((algo) => (
-              <li key={algo.name}>
-                <Link href={algo.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {algo.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+      <div className="flex-grow grid grid-cols-2 gap-4 overflow-hidden">
+        <div className="flex flex-col space-y-4 overflow-auto pr-2">
+          <h2 className="text-xl font-semibold text-indigo-600">Algorithms</h2>
+          <Card title="Sorting Algorithms" items={sortingAlgorithms} />
+          <Card title="Searching Algorithms" items={searchingAlgorithms} />
+          <Card title="Dynamic Programming" items={dynamicProgramming} />
+          <Card title="String Matching" items={stringMatching} />
+          <Card title="Graph Algorithms" items={graphAlgorithms} />
+        </div>
 
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Searching Algorithms</h2>
-          <ul className="space-y-2">
-            {searchingAlgorithms.map((algo) => (
-              <li key={algo.name}>
-                <Link href={algo.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {algo.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Graph Algorithms</h2>
-          <ul className="space-y-2">
-            {graphAlgorithms.map((algo) => (
-              <li key={algo.name}>
-                <Link href={algo.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {algo.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Dynamic Programming Algorithms</h2>
-          <ul className="space-y-2">
-            {dynamicProgrammingAlgorithms.map((algo) => (
-              <li key={algo.name}>
-                <Link href={algo.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {algo.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">String Matching Algorithms</h2>
-          <ul className="space-y-2">
-            {stringMatchingAlgorithms.map((algo) => (
-              <li key={algo.name}>
-                <Link href={algo.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {algo.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Linear Data Structures</h2>
-          <ul className="space-y-2">
-            {linearDataStructures.map((ds) => (
-              <li key={ds.name}>
-                <Link href={ds.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {ds.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Tree Data Structures</h2>
-          <ul className="space-y-2">
-            {treeDataStructures.map((ds) => (
-              <li key={ds.name}>
-                <Link href={ds.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {ds.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Heap Structures</h2>
-          <ul className="space-y-2">
-            {heapDataStructures.map((ds) => (
-              <li key={ds.name}>
-                <Link href={ds.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {ds.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Graph Structures</h2>
-          <ul className="space-y-2">
-            {graphDataStructures.map((ds) => (
-              <li key={ds.name}>
-                <Link href={ds.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
-                  {ds.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-        
+        <div className="flex flex-col space-y-4 overflow-auto pr-2">
+          <h2 className="text-xl font-semibold text-indigo-600">Data Structures</h2>
+          <Card title="Linear Data Structures" items={linearDataStructures} />
+          <Card title="Tree Data Structures" items={treeDataStructures} />
+          <Card title="Heap Data Structures" items={heapDataStructures} />
+          <Card title="Hash-Based Data Structures" items={hashDataStructures} />
+          <Card title="Graph Representations" items={graphRepresentations} />
+        </div>
       </div>
     </div>
   );
