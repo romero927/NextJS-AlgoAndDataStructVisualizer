@@ -1,6 +1,27 @@
 // app/algorithms/fibonacci/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function fibonacciDP(n):
+    if n <= 1:
+        return n
+    
+    dp = array of size n+1
+    dp[0] = 0
+    dp[1] = 1
+    
+    for i from 2 to n:
+        dp[i] = dp[i-1] + dp[i-2]
+        visualize(dp, i)
+    
+    return dp[n]
+
+function visualize(dp, currentIndex):
+    // Update UI to show:
+    // 1. The current state of the dp array
+    // 2. Highlight the current index being calculated
+    // 3. Show the calculation dp[i] = dp[i-1] + dp[i-2]`;
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -86,6 +107,7 @@ const Fibonacci: React.FC = () => {
         <p className="text-gray-700 mt-2">
           This approach is much more efficient than the recursive method, especially for larger values of n.
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

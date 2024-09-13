@@ -1,6 +1,26 @@
 // app/algorithms/naive-string-matching/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function naiveStringMatch(text, pattern):
+    n = length of text
+    m = length of pattern
+    
+    for i from 0 to n - m:
+        j = 0
+        while j < m and text[i + j] == pattern[j]:
+            j = j + 1
+            visualize(text, pattern, i, j)
+        if j == m:
+            print "Pattern found at index", i
+
+function visualize(text, pattern, i, j):
+    // Update UI to show:
+    // 1. The full text with the current window highlighted
+    // 2. The pattern below the text, aligned with the current window
+    // 3. Highlight matching characters
+    // 4. Indicate the current comparison`;
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -115,6 +135,7 @@ const NaiveStringMatching: React.FC = () => {
           While simple to implement, this algorithm has a time complexity of O(nm), where n is the length of the 
           text and m is the length of the pattern. This can be inefficient for large texts or patterns.
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

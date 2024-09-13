@@ -1,6 +1,30 @@
 // app/algorithms/knapsack/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function knapsack(W, wt, val, n):
+    K = 2D array of size (n+1) x (W+1)
+    
+    for i from 0 to n:
+        for w from 0 to W:
+            if i == 0 or w == 0:
+                K[i][w] = 0
+            elif wt[i-1] <= w:
+                K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]], K[i-1][w])
+            else:
+                K[i][w] = K[i-1][w]
+            visualize(K, i, w, wt, val)
+    
+    return K[n][W]
+
+function visualize(K, i, w, wt, val):
+    // Update UI to show:
+    // 1. The current state of the K array
+    // 2. Highlight the current cell being calculated
+    // 3. Show the weight and value of the current item
+    // 4. Indicate which case of the algorithm is being applied`;
+
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -178,6 +202,7 @@ const KnapsackProblem: React.FC = () => {
           This dynamic programming approach solves the problem in O(nW) time complexity, where n is the number of items 
           and W is the knapsack capacity.
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

@@ -1,6 +1,31 @@
 // app/algorithms/longest-common-subsequence/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function LCS(X, Y):
+    m = length of X
+    n = length of Y
+    L = 2D array of size (m+1) x (n+1)
+    
+    for i from 0 to m:
+        for j from 0 to n:
+            if i == 0 or j == 0:
+                L[i][j] = 0
+            elif X[i-1] == Y[j-1]:
+                L[i][j] = L[i-1][j-1] + 1
+            else:
+                L[i][j] = max(L[i-1][j], L[i][j-1])
+            visualize(L, i, j, X, Y)
+    
+    return L[m][n]
+
+function visualize(L, i, j, X, Y):
+    // Update UI to show:
+    // 1. The current state of the L array
+    // 2. Highlight the current cell being calculated
+    // 3. Show the comparison between X[i-1] and Y[j-1]
+    // 4. Indicate which case of the algorithm is being applied`;
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -147,6 +172,7 @@ const LongestCommonSubsequence: React.FC = () => {
           This dynamic programming approach solves the problem in O(mn) time complexity, where m and n are the lengths 
           of the input strings.
         </p>
+      <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

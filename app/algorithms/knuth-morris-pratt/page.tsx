@@ -1,6 +1,64 @@
 // app/algorithms/knuth-morris-pratt/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `function KMP(text, pattern):
+    n = length of text
+    m = length of pattern
+    lps = computeLPSArray(pattern)
+    
+    i = 0  // index for text
+    j = 0  // index for pattern
+    
+    while i < n:
+        if pattern[j] == text[i]:
+            i = i + 1
+            j = j + 1
+        
+        if j == m:
+            print "Pattern found at index", i - j
+            j = lps[j - 1]
+        elif i < n and pattern[j] != text[i]:
+            if j != 0:
+                j = lps[j - 1]
+            else:
+                i = i + 1
+        
+        visualize(text, pattern, i, j, lps)
+
+function computeLPSArray(pattern):
+    m = length of pattern
+    lps = array of size m
+    len = 0
+    i = 1
+    
+    while i < m:
+        if pattern[i] == pattern[len]:
+            len = len + 1
+            lps[i] = len
+            i = i + 1
+        elif len != 0:
+            len = lps[len - 1]
+        else:
+            lps[i] = 0
+            i = i + 1
+        visualizeLPS(pattern, lps, i, len)
+    
+    return lps
+
+function visualize(text, pattern, i, j, lps):
+    // Update UI to show:
+    // 1. The full text with the current window highlighted
+    // 2. The pattern below the text, aligned with the current window
+    // 3. Highlight matching characters
+    // 4. Show the LPS array and its use in skipping comparisons
+
+function visualizeLPS(pattern, lps, i, len):
+    // Update UI to show:
+    // 1. The pattern
+    // 2. The current state of the LPS array
+    // 3. Highlight the current comparison in the pattern`;
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -166,6 +224,7 @@ const KnuthMorrisPratt: React.FC = () => {
           the length of the pattern. This makes it much more efficient than the naive approach, especially 
           for large texts and patterns.
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );

@@ -1,6 +1,72 @@
 // app/data-structures/map/page.tsx
 'use client';
 
+import Pseudocode from '../../components/Pseudocode';
+const pseudocodeExample = `class MapNode:
+    key
+    value
+
+class Map:
+    buckets = array of linked lists
+    size = 0
+    capacity
+
+    function hash(key):
+        // Implement a hash function
+        return hash value
+
+    function set(key, value):
+        index = hash(key) % capacity
+        for node in buckets[index]:
+            if node.key == key:
+                node.value = value
+                visualize("update", key, value, index)
+                return
+        buckets[index].append(new MapNode(key, value))
+        size = size + 1
+        visualize("insert", key, value, index)
+        if size > capacity * 0.75:
+            resize()
+
+    function get(key):
+        index = hash(key) % capacity
+        for node in buckets[index]:
+            if node.key == key:
+                visualize("get", key, node.value, index)
+                return node.value
+        visualize("get", key, null, index)
+        return null
+
+    function remove(key):
+        index = hash(key) % capacity
+        for i, node in enumerate(buckets[index]):
+            if node.key == key:
+                buckets[index].pop(i)
+                size = size - 1
+                visualize("remove", key, node.value, index)
+                return node.value
+        visualize("remove", key, null, index)
+        return null
+
+    function resize():
+        newCapacity = capacity * 2
+        newBuckets = array of newCapacity linked lists
+        for bucket in buckets:
+            for node in bucket:
+                newIndex = hash(node.key) % newCapacity
+                newBuckets[newIndex].append(node)
+        buckets = newBuckets
+        capacity = newCapacity
+        visualize("resize", null, null, null)
+
+    function visualize(operation, key, value, index):
+        // Update UI to show:
+        // 1. The current state of the Map (buckets and their contents)
+        // 2. Highlight the bucket involved in the current operation
+        // 3. Show the key-value pair being operated on
+        // 4. Indicate the type of operation (insert, update, get, remove, resize)
+        // 5. For resize operation, show the before and after states`;
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -146,6 +212,7 @@ const MapVisualization: React.FC = () => {
           counting occurrences of elements, and implementing associative arrays. They provide fast 
           access to values and are particularly useful when you need to quickly look up data based on unique keys.
         </p>
+        <Pseudocode code={pseudocodeExample} />
       </div>
     </div>
   );
