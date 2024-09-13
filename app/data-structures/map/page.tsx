@@ -1,221 +1,118 @@
-// app/data-structures/map/page.tsx
-'use client';
+// app/page.tsx
+import React from 'react';
+import Link from 'next/link';
 
-import Pseudocode from '../../components/Pseudocode';
-const pseudocodeExample = `class MapNode:
-    key
-    value
-
-class Map:
-    buckets = array of linked lists
-    size = 0
-    capacity
-
-    function hash(key):
-        // Implement a hash function
-        return hash value
-
-    function set(key, value):
-        index = hash(key) % capacity
-        for node in buckets[index]:
-            if node.key == key:
-                node.value = value
-                visualize("update", key, value, index)
-                return
-        buckets[index].append(new MapNode(key, value))
-        size = size + 1
-        visualize("insert", key, value, index)
-        if size > capacity * 0.75:
-            resize()
-
-    function get(key):
-        index = hash(key) % capacity
-        for node in buckets[index]:
-            if node.key == key:
-                visualize("get", key, node.value, index)
-                return node.value
-        visualize("get", key, null, index)
-        return null
-
-    function remove(key):
-        index = hash(key) % capacity
-        for i, node in enumerate(buckets[index]):
-            if node.key == key:
-                buckets[index].pop(i)
-                size = size - 1
-                visualize("remove", key, node.value, index)
-                return node.value
-        visualize("remove", key, null, index)
-        return null
-
-    function resize():
-        newCapacity = capacity * 2
-        newBuckets = array of newCapacity linked lists
-        for bucket in buckets:
-            for node in bucket:
-                newIndex = hash(node.key) % newCapacity
-                newBuckets[newIndex].append(node)
-        buckets = newBuckets
-        capacity = newCapacity
-        visualize("resize", null, null, null)
-
-    function visualize(operation, key, value, index):
-        // Update UI to show:
-        // 1. The current state of the Map (buckets and their contents)
-        // 2. Highlight the bucket involved in the current operation
-        // 3. Show the key-value pair being operated on
-        // 4. Indicate the type of operation (insert, update, get, remove, resize)
-        // 5. For resize operation, show the before and after states`;
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-interface MapEntry {
-  key: string;
-  value: string;
+interface Item {
+  name: string;
+  path: string;
 }
 
-const MapVisualization: React.FC = () => {
-  const [map, setMap] = useState<Map<string, string>>(new Map());
-  const [inputKey, setInputKey] = useState<string>('');
-  const [inputValue, setInputValue] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+const sortingAlgorithms: Item[] = [
+  { name: 'Bubble Sort', path: '/algorithms/bubble-sort' },
+  { name: 'Quick Sort', path: '/algorithms/quick-sort' },
+  { name: 'Merge Sort', path: '/algorithms/merge-sort' },
+  { name: 'Insertion Sort', path: '/algorithms/insertion-sort' },
+  { name: 'Selection Sort', path: '/algorithms/selection-sort' },
+  { name: 'Heap Sort', path: '/algorithms/heap-sort' },
+];
 
-  const addEntry = () => {
-    if (inputKey.trim() !== '' && inputValue.trim() !== '') {
-      setMap(new Map(map.set(inputKey, inputValue)));
-      setInputKey('');
-      setInputValue('');
-      setMessage(`Added key-value pair: ${inputKey} => ${inputValue}`);
-    } else {
-      setMessage('Please enter both key and value.');
-    }
-  };
+const searchingAlgorithms: Item[] = [
+  { name: 'Binary Search', path: '/algorithms/binary-search' },
+  { name: 'Linear Search', path: '/algorithms/linear-search' },
+  { name: 'Depth-First Search', path: '/algorithms/depth-first-search' },
+  { name: 'Breadth-First Search', path: '/algorithms/breadth-first-search' },
+];
 
-  const getEntry = () => {
-    if (inputKey.trim() !== '') {
-      const value = map.get(inputKey);
-      if (value !== undefined) {
-        setMessage(`Value for key "${inputKey}": ${value}`);
-      } else {
-        setMessage(`Key "${inputKey}" not found in the map.`);
-      }
-    } else {
-      setMessage('Please enter a key to get.');
-    }
-  };
+const dynamicProgramming: Item[] = [
+  { name: 'Fibonacci Sequence', path: '/algorithms/fibonacci' },
+  { name: 'Longest Common Subsequence', path: '/algorithms/lcs' },
+  { name: 'Knapsack Problem', path: '/algorithms/knapsack' },
+];
 
-  const updateEntry = () => {
-    if (inputKey.trim() !== '' && inputValue.trim() !== '') {
-      if (map.has(inputKey)) {
-        setMap(new Map(map.set(inputKey, inputValue)));
-        setInputKey('');
-        setInputValue('');
-        setMessage(`Updated value for key "${inputKey}" to "${inputValue}"`);
-      } else {
-        setMessage(`Key "${inputKey}" not found. Use 'Add' to create a new entry.`);
-      }
-    } else {
-      setMessage('Please enter both key and value to update.');
-    }
-  };
+const stringMatching: Item[] = [
+  { name: 'Naive String Matching', path: '/algorithms/naive-string-matching' },
+  { name: 'Knuth-Morris-Pratt', path: '/algorithms/kmp' },
+];
 
-  const deleteEntry = () => {
-    if (inputKey.trim() !== '') {
-      if (map.has(inputKey)) {
-        const newMap = new Map(map);
-        newMap.delete(inputKey);
-        setMap(newMap);
-        setInputKey('');
-        setMessage(`Deleted entry with key "${inputKey}"`);
-      } else {
-        setMessage(`Key "${inputKey}" not found in the map.`);
-      }
-    } else {
-      setMessage('Please enter a key to delete.');
-    }
-  };
+const graphAlgorithms: Item[] = [
+  { name: "Dijkstra's Shortest Path", path: '/algorithms/dijkstra' },
+  { name: "Kruskal's Minimum Spanning Tree", path: '/algorithms/kruskal' },
+  { name: "Prim's Minimum Spanning Tree", path: '/algorithms/prim' },
+  { name: 'Topological Sort', path: '/algorithms/topological-sort' },
+];
 
+const linearDataStructures: Item[] = [
+  { name: 'Array', path: '/data-structures/array' },
+  { name: 'ArrayList', path: '/data-structures/arraylist' },
+  { name: 'Linked List', path: '/data-structures/linked-list' },
+  { name: 'Stack', path: '/data-structures/stack' },
+  { name: 'Queue', path: '/data-structures/queue' },
+  { name: 'Deque', path: '/data-structures/deque' },
+];
+
+const treeDataStructures: Item[] = [
+  { name: 'Binary Tree', path: '/data-structures/binary-tree' },
+  { name: 'Binary Search Tree', path: '/data-structures/bst' },
+  { name: 'AVL Tree', path: '/data-structures/avl-tree' },
+  { name: 'Red-Black Tree', path: '/data-structures/red-black-tree' },
+];
+
+const heapDataStructures: Item[] = [
+  { name: 'Min Heap', path: '/data-structures/min-heap' },
+  { name: 'Max Heap', path: '/data-structures/max-heap' },
+];
+
+const hashDataStructures: Item[] = [
+  { name: 'Hash Table', path: '/data-structures/hash-table' },
+  { name: 'Map', path: '/data-structures/map' },
+];
+
+const graphRepresentations: Item[] = [
+  { name: 'Adjacency Matrix', path: '/data-structures/adjacency-matrix' },
+  { name: 'Adjacency List', path: '/data-structures/adjacency-list' },
+];
+
+const Card: React.FC<{ title: string; items: Item[] }> = ({ title, items }) => (
+  <div className="bg-white shadow rounded-lg overflow-hidden">
+    <div className="bg-indigo-600 text-white text-sm font-semibold py-1 px-2">
+      {title}
+    </div>
+    <div className="p-2">
+      <div className="grid grid-cols-2 gap-1 text-sm">
+        {items.map((item) => (
+          <Link key={item.name} href={item.path} className="text-indigo-600 hover:text-indigo-800 transition duration-300">
+            {item.name}
+          </Link>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-indigo-700">Map Data Structure</h1>
+    <div className="container mx-auto px-4 pt-16 pb-8 min-h-screen flex flex-col">
+      <h1 className="text-2xl font-bold my-4 text-indigo-700">Algorithm and Data Structure Visualizer</h1>
       
-      <div className="mb-8">
-        <input
-          type="text"
-          value={inputKey}
-          onChange={(e) => setInputKey(e.target.value)}
-          placeholder="Enter key"
-          className="border p-2 mr-2"
-        />
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Enter value"
-          className="border p-2 mr-2"
-        />
-        <button onClick={addEntry} className="btn-primary mr-2">Add</button>
-        <button onClick={getEntry} className="btn-primary mr-2">Get</button>
-        <button onClick={updateEntry} className="btn-primary mr-2">Update</button>
-        <button onClick={deleteEntry} className="btn-primary">Delete</button>
-      </div>
+      <div className="flex-grow grid grid-cols-2 gap-4 overflow-hidden">
+        <div className="flex flex-col space-y-4 overflow-auto pr-2">
+          <h2 className="text-xl font-semibold text-indigo-600">Algorithms</h2>
+          <Card title="Sorting Algorithms" items={sortingAlgorithms} />
+          <Card title="Searching Algorithms" items={searchingAlgorithms} />
+          <Card title="Dynamic Programming" items={dynamicProgramming} />
+          <Card title="String Matching" items={stringMatching} />
+          <Card title="Graph Algorithms" items={graphAlgorithms} />
+        </div>
 
-      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <AnimatePresence>
-          {Array.from(map).map(([key, value]) => (
-            <motion.div
-              key={key}
-              className="bg-blue-500 text-white p-4 rounded shadow"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="font-bold">{key}</div>
-              <div>{value}</div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
-
-      {message && (
-        <div className="mb-8 text-green-600 font-semibold">{message}</div>
-      )}
-
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4 text-indigo-600">How Map Works</h2>
-        <p className="text-gray-700">
-          A Map is a collection of key-value pairs where each key is unique. It allows fast retrieval 
-          of values based on their associated keys.
-        </p>
-        <p className="text-gray-700 mt-2">
-          Key operations:
-          <ul className="list-disc list-inside mt-2">
-            <li>Add: Inserts a new key-value pair into the map</li>
-            <li>Get: Retrieves the value associated with a given key</li>
-            <li>Update: Modifies the value associated with an existing key</li>
-            <li>Delete: Removes a key-value pair from the map</li>
-          </ul>
-        </p>
-        <p className="text-gray-700 mt-2">
-          Time complexities (average case):
-          <ul className="list-disc list-inside mt-2">
-            <li>Add: O(1)</li>
-            <li>Get: O(1)</li>
-            <li>Update: O(1)</li>
-            <li>Delete: O(1)</li>
-          </ul>
-        </p>
-        <p className="text-gray-700 mt-2">
-          Maps are used in various applications such as caching, storing configuration settings, 
-          counting occurrences of elements, and implementing associative arrays. They provide fast 
-          access to values and are particularly useful when you need to quickly look up data based on unique keys.
-        </p>
-        <Pseudocode code={pseudocodeExample} />
+        <div className="flex flex-col space-y-4 overflow-auto pr-2">
+          <h2 className="text-xl font-semibold text-indigo-600">Data Structures</h2>
+          <Card title="Linear Data Structures" items={linearDataStructures} />
+          <Card title="Tree Data Structures" items={treeDataStructures} />
+          <Card title="Heap Data Structures" items={heapDataStructures} />
+          <Card title="Hash-Based Data Structures" items={hashDataStructures} />
+          <Card title="Graph Representations" items={graphRepresentations} />
+        </div>
       </div>
     </div>
   );
-};
-
-export default MapVisualization;
+}
